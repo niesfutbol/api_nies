@@ -30,5 +30,5 @@ def get_all_items():
     return base_datos.to_dict()
 
 @app.get("/player/{player_id}")
-def get_player():
+def get_player(player_id: int):
     return PLAYERS[player_id]
