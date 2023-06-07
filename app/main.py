@@ -1,4 +1,10 @@
 from fastapi import FastAPI
+import json
+import players_from_as as pfa
+
+
+f = open("./players.json")
+players = json.load(f)
 
 app = FastAPI()
 
