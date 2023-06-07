@@ -5,7 +5,7 @@ import players_from_as as pfa
 
 f = open("./players.json")
 players = json.load(f)
-#PLAYERS = pfa.get_player_info_from_list(players["response"])
+PLAYERS = pfa.get_player_info_from_list(players["response"])
 
 app = FastAPI()
 
