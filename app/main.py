@@ -1,39 +1,16 @@
-from typing import Optional
-import pandas as pd
-from pydantic import BaseModel
-from fastapi import FastAPI, Body
+from fastapi import FastAPI
 
-
-def init_bd():
-    diccionario = {"name": ["Nepo"], "description": ["Humano"], "price": [0], "tax": [5]}
-    base_datos = pd.DataFrame.from_dict(diccionario)
-    return base_datos
-
-
-class Item(BaseModel):
-    name: str
-    description: Optional[str] = None
-    price: float
-    tax: Optional[float] = None
-
-
-app = FastAPI()  # pragma: no mutate
-
-PATH_DATABASE = "/tmp/data_base.csv"
-
-
-@app.post("/items/", status_code=201)
-async def create_item(item: Item = Body(...)):
-    base_datos = init_bd()
-    base_datos = base_datos.append(item.__dict__, ignore_index=True)
-    base_datos.to_csv(PATH_DATABASE, index_label="id")
-    return item
+app = FastAPI()
 
 
 @app.get("/")
 def read_root():
-    return {"msg": "Hello World from GECI - Ciencia de Datos!"}
+    return {"Hello": "World"}
 
+
+@app.get("/items/{item_id}")
+def read_item(item_id: int, q: str = None):
+    return {"item_id": item_id, "q": q}
 
 @app.get("/make_add")
 def make_add():
