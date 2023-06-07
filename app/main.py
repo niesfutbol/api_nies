@@ -5,6 +5,7 @@ import players_from_as as pfa
 
 f = open("./players.json")
 players = json.load(f)
+PLAYERS = pfa.get_player_info_from_list(players["response"])
 
 app = FastAPI()
 
@@ -27,3 +28,7 @@ def make_add():
 def get_all_items():
     base_datos = pd.read_csv(PATH_DATABASE)
     return base_datos.to_dict()
+
+@app.get("/player/{player_id}")
+def get_player():
+    return PLAYERS[player_id]
