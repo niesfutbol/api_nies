@@ -29,6 +29,6 @@ def get_all_items():
     base_datos = pd.read_csv(PATH_DATABASE)
     return base_datos.to_dict()
 
-#@app.get("/player/{player_id}")
-#def get_player():
-#    return PLAYERS[player_id]
+@app.get("/player/{player_id}")
+def get_player():
+    return PLAYERS[player_id]
