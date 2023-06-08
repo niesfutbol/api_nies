@@ -2,6 +2,6 @@
 src="https://github.com/nepito/world_cup_semis/blob/develop/img/logo.jpeg" align="right" width="256"
 /></a>
 
-# Template for Python projects
+# Template for API of NIES
 
 ## Step to use
